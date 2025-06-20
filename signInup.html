@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập / Đăng ký</title>
+  <link rel="stylesheet" href="styles-signin.css" />
+</head>
+
+<body>
+
+  <div class="auth-container">
+    <!-- Bên trái: Hình ảnh -->
+    <div class="auth-image">
+      <img src="banner/F5 store.png" alt="Banner" />
+    </div>
+
+    <!-- Bên phải: Form -->
+    <div class="auth-form">
+      <div class="form-content">
+        <!-- Đăng nhập -->
+        <div class="form-box login active">
+          <h2>Đăng nhập</h2>
+          <form>
+            <div class="input-box">
+              <label>Email</label>
+              <input type="email" required />
+            </div>
+            <div class="input-box">
+              <label>Mật khẩu</label>
+              <input type="password" required />
+            </div>
+            <div class="remember-forgot">
+              <label><input type="checkbox" /> Nhớ tôi</label>
+              <a href="#">Quên mật khẩu?</a>
+            </div>
+            <button class="btn">Đăng nhập</button>
+            <div class="login-register">
+              <p>Chưa có tài khoản? <a href="#" class="register-link">Đăng ký</a></p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Đăng ký -->
+        <div class="form-box register">
+          <h2>Đăng ký</h2>
+          <form>
+            <div class="input-box">
+              <label>Họ và tên</label>
+              <input type="text" required />
+            </div>
+            <div class="input-box">
+              <label>Email</label>
+              <input type="email" required />
+            </div>
+            <div class="input-box">
+              <label>Mật khẩu</label>
+              <input type="password" required />
+            </div>
+            <div class="input-box">
+              <label>Xác nhận mật khẩu</label>
+              <input type="password" required />
+            </div>
+            <button class="btn">Đăng ký</button>
+            <div class="login-register">
+              <p>Đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scriptsignInup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng & Thanh toán</title>
+  <link rel="stylesheet" href="styles-cart.css">
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <div class="cart-container">
+    <h1>Giỏ hàng của bạn</h1>
+    <div id="cart-items"></div>
+
+    <div class="voucher-section">
+      <label for="voucherInput">Mã giảm giá:</label>
+      <input type="text" id="voucherInput" placeholder="Nhập mã voucher">
+      <button onclick="applyVoucher()">Áp dụng</button>
+      <p class="voucher-note" id="voucherNote"></p>
+    </div>
+
+    <div class="cart-summary">
+      <p>Tổng cộng: <strong id="totalAmount">0₫</strong></p>
+      <button onclick="openCheckoutPopup()">Thanh toán</button>
+
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="checkoutPopup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Xác nhận đơn hàng</h2>
+      <div id="checkoutFormContainer">
+        <label>Họ và tên:</label>
+        <input type="text" id="fullname" placeholder="Nhập họ và tên">
+
+        <label>Địa chỉ giao hàng:</label>
+        <input type="text" id="address" placeholder="Nhập địa chỉ">
+
+        <label>Số điện thoại:</label>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input type="text" id="phone" placeholder="Nhập số điện thoại">
+          <button onclick="sendVerificationCode()">Gửi mã</button>
+        </div>
+
+        <label>Mã xác minh (nhập 123):</label>
+        <input type="text" id="verifyCode" placeholder="Nhập mã xác minh">
+
+        <label>Ghi chú cho shipper:</label>
+        <input type="text" id="note" placeholder="Ví dụ: gọi trước khi giao">
+
+        <p>Ngày giao dự kiến: <strong id="deliveryDate"></strong></p>
+
+        <label><input type="radio" name="paymentMethod" value="cod"> Thanh toán khi nhận hàng (COD)</label><br>
+        <label><input type="radio" name="paymentMethod" value="bankTransfer"> Chuyển khoản ngân hàng</label>
+
+        <div id="bankingSection" style="display:none;">
+          <p>Chọn phương thức chuyển khoản:</p>
+          <label><input type="radio" name="bank" value="momo"> MoMo</label>
+          <label><input type="radio" name="bank" value="vietcombank"> Vietcombank</label>
+          <label><input type="radio" name="bank" value="tpbank"> TPBank</label>
+          <label><input type="radio" name="bank" value="mbbank"> MBBank</label>
+          <label><input type="radio" name="bank" value="visa"> Visa</label>
+
+          <div id="bankDetails"></div>
+
+          <div id="bankQRContainer" style="display:none;">
+            <img id="bankQRImage" src="" alt="QR ngân hàng" width="400" height="400"
+              style="display: block; margin: 20px auto;">
+            <p>Sử dụng app ngân hàng để quét mã QR</p>
+          </div>
+        </div>
+        <div id="uploadProofSection" style="margin-top: 20px;">
+          <label for="transferProof">Tải lên hóa đơn/chứng từ chuyển khoản (bắt buộc):</label><br />
+          <input type="file" id="transferProof" accept="image/*" />
+          <div id="uploadPreview" style="margin-top:10px;"></div>
+        </div>
+
+        <h3>Chi tiết đơn hàng:</h3>
+        <ul id="orderPreview"></ul>
+        <p id="voucherAppliedLine"></p>
+        <p>Phí vận chuyển: <strong>30.000₫</strong></p>
+        <p>Tổng thanh toán: <strong id="checkoutTotal">0₫</strong></p>
+
+        <button onclick="submitOrder()">✅ Xác nhận đặt hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

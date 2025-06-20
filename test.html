@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test New Arrival</title>
+  <style>
+    .arrival-section {
+      padding: 40px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .arrival-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .arrival-slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 60%;
+    }
+    .product-card {
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .product-card img {
+      width: 100%;
+    }
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+    .compare-price {
+      text-decoration: line-through;
+      color: #777;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<section class="arrival-section">
+  <h2 class="arrival-title">NEW ARRIVAL</h2>
+  <div class="arrival-slider">
+    <button id="prevArrivalBtn">←</button>
+    <div id="newArrivalGrid" class="product-grid"></div>
+    <button id="nextArrivalBtn">→</button>
+  </div>
+</section>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const products = [
+      { img: 'https://via.placeholder.com/300x400?text=SP1', name: 'Áo New 1', price: '500.000₫', old: '700.000₫' },
+      { img: 'https://via.placeholder.com/300x400?text=SP2', name: 'Áo New 2', price: '450.000₫', old: '650.000₫' },
+      { img: 'https://via.placeholder.com/300x400?text=SP3', name: 'Áo New 3', price: '600.000₫', old: '850.000₫' }
+    ];
+
+    let currentIndex = 0;
+    const itemsPerPage = 2;
+
+    const grid = document.getElementById('newArrivalGrid');
+    const nextBtn = document.getElementById('nextArrivalBtn');
+    const prevBtn = document.getElementById('prevArrivalBtn');
+
+    function renderProducts() {
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const visible = products.slice(currentIndex, currentIndex + itemsPerPage);
+      visible.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p class="price">${p.price} <span class="compare-price">${p.old}</span></p>
+        `;
+        grid.appendChild(card);
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex + itemsPerPage >= products.length;
+    }
+
+    nextBtn?.addEventListener('click', () => {
+      if (currentIndex + itemsPerPage < products.length) {
+        currentIndex++;
+        renderProducts();
+      }
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderProducts();
+      }
+    });
+
+    renderProducts();
+  });
+</script>
+
+</body>
+</html>

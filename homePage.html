@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex">
+  <title>F5 Store</title>
+  
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <img src="banner/F5 store.png" alt="Banner F5 Store" class="hero-img" />
+
+  <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</button>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Chào mừng đến với F5 Store</h1>
+      <p>Khám phá bộ sưu tập thời trang mới nhất của chúng tôi</p>
+      <a href="#san-pham" class="btn">Xem sản phẩm</a>
+    </div>
+  </section>
+
+  <!-- BESTSELLER -->
+  <section class="products" id="san-pham">
+    <div class="container product-section">
+      <div class="product-heading">
+        <div class="led-banner-wrapper">
+          <h2 class="led-banner">
+            <lottie-player src="icon-animation/Animation - 1750168920757.json" background="transparent" speed="1"
+              style="width: 60px; height: 60px; display: inline-block; vertical-align: middle; transform: rotate(90deg);"
+              loop autoplay>
+            </lottie-player>
+            <span style="margin: 0 10px;">BESTSELLER</span>
+            <lottie-player src="icon-animation/Animation - 1750168920757.json" background="transparent" speed="1"
+              style="width: 60px; height: 60px; display: inline-block; vertical-align: middle; transform: rotate(90deg);"
+              loop autoplay>
+            </lottie-player>
+          </h2>
+        </div>
+      </div>
+
+      <div id="bestsellerGrid" class="product-grid bestseller-grid"></div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button id="prevBestsellerBtn" class="arrow">←</button>
+        <button id="nextBestsellerBtn" class="arrow">→</button>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- NEW ARRIVAL -->
+  <section class="arrival-section">
+    <h2 class="arrival-title">NEW ARRIVAL</h2>
+    <div class="arrival-slider">
+      <button id="prevArrivalBtn" class="arrow">←</button>
+      <div id="newArrivalGrid" class="product-grid newarrival-grid"></div>
+      <button id="nextArrivalBtn" class="arrow">→</button>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+  
+</body>
+
+</html>
